@@ -202,6 +202,10 @@ function install_cli() {
   ln -s -f "/usr/local/bin/protonvpn-cli" "/usr/local/bin/pvpn"
   chown "root:root" "/usr/local/bin/protonvpn-cli" "/usr/local/bin/pvpn"
   chmod 0755 "/usr/local/bin/protonvpn-cli" "/usr/local/bin/pvpn"
+  if [ ! -f "/etc/openvpn/update-resolv-conf" ]; then
+    wget --quiet -O "/etc/openvpn/update-resolv-conf" "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
+    chmod 0755 "/etc/openvpn/update-resolv-conf"
+  fi
   echo "Done."
 }
 
